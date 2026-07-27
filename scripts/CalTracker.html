@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CalTracker</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: system-ui, sans-serif;
+            background-color: #f4f7f6;
+            min-height: 100vh;
+        }
+
+        /* 1. Haupt-Layout (Nebeneinander: Sidebar | Hauptbereich) */
+        /*  100vh =  100% of the browser windows height*/
+        .app-layout {
+            display: flex;
+            min-height: 100vh;
+        }
+
+        /* 2. Linke Sidebar (Account / Übersicht) */
+        .sidebar {
+            width: 380px;
+            background-color: #64b2cf;
+            color: white;
+            padding: 30px 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        /* 3. Rechter Bereich (Navigation oben + Inhalt) */
+        .main-content {
+            flex: 1; /* Nimmt den gesamten restlichen Platz rechts ein */
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* 4. Navigation (Rechtsbündig) */
+        .navigation {
+            background-color: #ffffff;
+            padding: 20px 30px;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .navigation ul {
+            list-style: none;
+            display: flex;
+            justify-content: flex-end; /* << HIER ERFOLGT DIE RECHTSBÜNDIGE AUSRICHTUNG */
+            gap: 60px;
+        }
+
+        .navigation ul li {
+            color: #333;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        .navigation ul li:hover {
+            color: #64b2cf;
+        }
+
+        /* 5. Eigentlicher Inhalt der Seite */
+        .content-area {
+            padding: 30px;
+            flex: 1;
+        }
+
+        .card {
+            background-color: white;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="app-layout">
+        
+        <!-- Linke Spalte (Sidebar für Account) -->
+        <aside class="sidebar">
+            <h2>Account</h2>
+            <p>Willkommen zurück!</p>
+            <div style="margin-top: auto;">
+            </div>
+        </aside>
+
+        <!-- Rechter Hauptbereich -->
+        <main class="main-content">
+            
+            <!-- Navigation (Rechtsbündig) -->
+            <nav class="navigation">
+                <ul>
+                    <li>Übersicht</li>
+                    <li>Liste</li>
+                    <li>Rezepte</li>
+                    <li>Einstellungen</li>
+                </ul>
+            </nav>
+
+            <!-- Inhaltsbereich -->
+            <section class="content-area">
+                <div class="card">
+                    <h3>Hauptinhalt / Dashboard</h3>
+                    <p>Filler</p>
+                </div>
+            </section>
+
+        </main>
+
+    </div>
+
+</body>
+</html>
