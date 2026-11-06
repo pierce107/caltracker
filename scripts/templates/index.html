@@ -1,273 +1,35 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <title>Title of the document</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Bootstrap Icons CSS -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-  </head>
-<style>
-/* Grundlegende Styling-Regeln */
-html, body {
-  height: 100%;
-  margin: 0;
-  background-color: rgba(243, 210, 241, 0.651);
-}
-
-body {
-  font-family: Arial, sans-serif;
-  overflow-wrap: hidden; /*disables horizontal scrolling*/
-}
-
-/* ---------------------------------- */
-/* MOBILE STYLES (Standard)           */
-/* ---------------------------------- */
-
-.nav-menu {
-  display: none; 
-  background-color: #333;
-  list-style: none;
-}
-
-.page-container-for-desktop {
-  display: none;
-}
-
-.page-container-for-mobile {
-  display: flex;
-  flex-direction: column; /* WICHTIG: Auf column geändert, damit Flexbox die Breite nicht quetscht */
-  min-height: 100vh;
-  padding-bottom: 60px; /* Platz für den fixierten Footer */
-}
-/* Der Container für die Boxen nebeneinander */
-.box-wrapper {
-  display: flex;
-  flex-direction: row;     /* Bringt die Boxen nebeneinander */
-  flex-wrap: wrap;         /* WICHTIG: Erlaubt der quick-selection, in die nächste Zeile zu rutschen */
-  justify-content: space-between; /* Verteilt sie gleichmäßig */
-  gap: 10px;               /* Abstand zwischen allen Boxen (auch nach unten) */
-  padding: 0 15px;
-  width: 100%;
-  box-sizing: border-box;
-}
-
-.box {
-  flex: 1;                 
-  max-width: calc(50% - 5px); /* OPTIONAL: Nutzt den Platz perfekt aus (50% minus halber Gap) */
-  height: 180px;           
-  padding: 15px;
-  border: 2px solid rgba(240, 208, 237, 0.651); 
-  border-radius: 20px;
-  box-sizing: border-box;
-  background-color: white; 
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-}
-
-.footer {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 60px;
-  background-color: #ffffff;
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  padding: 10px 0;
-  border-top: 1px solid #ddd;
-}
-
-.nav-item {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-decoration: none;
-  color: #333;
-  font-size: 0.85rem;
-  gap: 4px;
-}
-
-.nav-item i {
-  font-size: 1.25rem;
-}
-
-.nav-menu a:hover {
-  background-color: #555;
-}
-.box h4 {
-  margin: 0 0 10px 0;
-  font-size: 1rem;
-  color: #333;
-}
-
-.box .value {
-  font-size: 1.5rem;
-  font-weight: bold;
-  color: #a04000; /* Beispielhafte Farbe für Kalorien */
-  margin-bottom: 15px;
-}
-
-.box .sub {
-  font-size: 0.9rem;
-  font-weight: normal;
-  color: #666;
-}
-
-.box .info {
-  margin: 0;
-  font-size: 0.85rem;
-  color: #555;
-}
-.quick-selection {
-  margin: 20px 0;
-}
-
-.quick-selection .section-title {
-  font-size: 1.1rem;
-  font-weight: bold;
-  color: #2c2240;
-  margin-bottom: 10px;
-}
-
-/* Der Container ordnet die Pillen nebeneinander an und bricht bei Bedarf um */
-.tag-container {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap; 
-  gap: 10px; /* Sauberer Abstand zwischen den Pillen (horizontal & vertikal) */
-}
-
-/* Jedes einzelne Pillen-Element */
-.food-tag {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;                     /* Abstand zwischen dem Plus-Icon und dem Text */
-  background-color: #e6e3f8;    /* Hellvioletter Hintergrund */
-  color: #2c2240;               /* Dunkler Text */
-  padding: 8px 16px;
-  border-radius: 50px;          /* Pillenform */
-  font-size: 1.1rem;
-  font-weight: 300;
-  box-sizing: border-box;
-  cursor: pointer;
-}
-
-.food-tag:hover {
-  background-color: #dcd7f2;    /* Leichter Hover-Effekt */
-}
-/*.footer .nav-item:hover{
-  background-color: #dcd7f2;
-  border-radius: 10px;
-  color: #333;
-  transition: transform 0.3s ease, color 0.3s ease;
-}
-.hover-area:hover{ /* triggers a set of style when a user places their mouse pointer over an element with the class .hover-area */ /*
-  background-color: #007bff;
-  color: #fff;
-  transform: scale(1.2); /* Makes the icon grow slightly }
-*/
-/*.list-of-meals {
-  display: flex;
-  flex-direction: column;
-  background-color: white;
-  border-radius: 20px;
-  border: 1x black;
-  width: 800px;
-  height: 400px;
-}*/
-.meal-tag i {
-  align-items: right;
-  font-size: 2rem;
-  color: rgba(226, 150, 221, 0.651);
-}
-.list-of-meals {
-  display: flex;
-  flex-direction: column;
-  background: #ffffff;
-  border-radius: 20px;
-  padding: 20px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-  width: 800px;
-  height: auto; /* to avoid overflowing when more data in the class list-of-meals is available*/
-  box-sizing: border-box;
-}
-.list-of-meals .meal-tag{
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 16px 0;
-  /* Trennlinie unter jedem Element außer dem letzten */
-  border-bottom: 1px solid #e5e5e5;
-}
-/* ---------------------------------- */
-/* DESKTOP STYLES (ab 768px Breite)   */
-/* ---------------------------------- */
-@media (min-width: 768px) {
-  .footer {
-    display: none;
-  }
-  .page-container-for-mobile {
-    display: none;
-  }
-  .page-container-for-desktop {
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-  }
-
-  .navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: #d32a2a;
-    padding: 1rem 1.5rem;
-    color: white;
-    position: sticky;
-  }
-
-  .nav-menu {
-    display: flex !important;
-    position: static;
-    flex-direction: row;
-    width: auto;
-    padding: 0;
-  }
-
-  .nav-menu li {
-    padding: 0;
-    margin-left: 1.5rem;
-  }
-
-  .nav-menu a:hover {
-    background-color: transparent;
-    text-decoration: underline;
-  }
-}
-</style>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <title>Übersicht</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <!-- Icon Libraries -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  
+  <!-- Verknüpfung zur ausgelagerten CSS-Datei -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
 
 <body>
-  <a href="lebensmittel.html">Lebensmittel</a>
-<div class="page-container-for-desktop">
-  <!-- Header / Inhalt -->
-  <header class="date" style="padding: 20px 20px 20px 20px;">Heute, {{ date }}</header>
-</div>
+  <div class="page-container-for-mobile">
+    <header class="date">Heute, {{ date }}</header>
+    
+    <div class="box-wrapper">
+      <div class="box">
+        <h4>Kalorien</h4>
+        <div class="value">1.640 <span class="sub">/ 2.400</span></div>
+        <p class="info">noch 760 kcal</p>
+      </div>
+      <div class="box">
+        <h4>Protein</h4>
+        <div class="value">112 g <span class="sub">/ 150</span></div>
+        <p class="info">noch 38 g</p>
+      </div>
+    </div>
 
-<div class="page-container-for-mobile">
-  <!-- Header / Inhalt -->
-  <header class="date" style="padding: 20px 20px 20px 20px;">Heute, {{ date }}</header>
-  <!-- Boxen in ein eigenes Wrapper-Element gelegt -->
-  <div class="box-wrapper">
-    <div class="box">
-      <h4>Kalorien</h4>
-      <div class="value">1.640 <span class="sub">/ 2.400</span></div>
-      <p class="info">noch 760 kcal</p>
-    </div>
-    <div class="box">
-      <h4>Protein</h4>
-      <div class="value">112 g <span class="sub">/ 150</span></div>
-      <p class="info">noch 38 g</p>
-    </div>
     <div class="quick-selection">
       <p class="section-title">Schnellauswahl</p>
       <div class="tag-container">
@@ -278,30 +40,31 @@ body {
         <div class="food-tag"><i class="bi bi-plus-lg"></i> Eier</div>
       </div>
     </div>
+
     <div class="list-of-meals">
-      <div class="meal-tag">Frühstück<i class="bi bi-plus-circle-fill"></i></div>
-      <div class="meal-tag">Mittagsessen<i class="bi bi-plus-circle-fill"></i></div>
-      <div class="meal-tag">Abendessen<i class="bi bi-plus-circle-fill"></i></div>
-      <div class="meal-tag">Snacks<i class="bi bi-plus-circle-fill"></i></div>
+      <div class="meal-tag">Frühstück <i class="bi bi-plus-circle-fill"></i></div>
+      <div class="meal-tag">Mittagessen <i class="bi bi-plus-circle-fill"></i></div>
+      <div class="meal-tag">Abendessen <i class="bi bi-plus-circle-fill"></i></div>
+      <div class="meal-tag">Snacks <i class="bi bi-plus-circle-fill"></i></div>
     </div>
+
+    <!-- Footer: "Übersicht" ist aktiv -->
+    <footer class="footer">
+      <a href="index.html" class="nav-item active">
+          <i class="fa-solid fa-chart-column"></i>
+          <span>Übersicht</span>
+      </a>
+      
+      <a href="lebensmittel.html" class="nav-item">
+          <i class="fa-solid fa-bars"></i>
+          <span>Lebensmittel</span>
+      </a>
+      
+      <a href="#profil" class="nav-item">
+          <i class="fa-solid fa-user"></i>
+          <span>Profil</span>
+      </a>
+    </footer>
   </div>
-  <!-- Der Footer, der unten bleiben soll -->
-  <footer class="footer">
-    <a href="#uebersicht" class="nav-item">
-        <i class="fa-solid fa-chart-column"></i>
-        <span>Übersicht</span>
-    </a>
-    
-    <a href="#lebensmittel" class="nav-item">
-        <i class="fa-solid fa-bars"></i>
-        <span>Lebensmittel</span>
-    </a>
-    
-    <a href="#profil" class="nav-item">
-        <i class="fa-solid fa-user"></i>
-        <span>Profil</span>
-    </a>
-  </footer>
-</div>
 </body>
 </html>

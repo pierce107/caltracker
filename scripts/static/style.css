@@ -1,0 +1,216 @@
+/* Grundlegende Styling-Regeln */
+html, body {
+  height: 100%;
+  margin: 0;
+  background-color: rgba(243, 210, 241, 0.651);
+  font-family: Arial, sans-serif;
+}
+
+body {
+  overflow-x: hidden; /* Verhindert horizontales Scrollen */
+}
+
+/* ---------------------------------- */
+/* MOBILE STYLES (Standard)           */
+/* ---------------------------------- */
+
+.nav-menu {
+  display: none; 
+  background-color: #333;
+  list-style: none;
+}
+
+.page-container-for-desktop {
+  display: none;
+}
+
+.page-container-for-mobile {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  padding-bottom: 80px; /* Ausreichend Platz für den fixierten Footer */
+  box-sizing: border-box;
+}
+
+/* Header-Datum */
+.date {
+  padding: 20px;
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+/* Der Container für die oberen Stat-Boxen */
+.box-wrapper {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 0 15px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.box {
+  flex: 1 1 calc(50% - 5px);
+  max-width: calc(50% - 5px);
+  height: 140px;
+  padding: 15px;
+  border: 2px solid rgba(240, 208, 237, 0.651); 
+  border-radius: 20px;
+  box-sizing: border-box;
+  background-color: white; 
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.box h4 {
+  margin: 0 0 8px 0;
+  font-size: 0.95rem;
+  color: #333;
+}
+
+.box .value {
+  font-size: 1.3rem;
+  font-weight: bold;
+  color: #a04000;
+  margin-bottom: 8px;
+}
+
+.box .sub {
+  font-size: 0.85rem;
+  font-weight: normal;
+  color: #666;
+}
+
+.box .info {
+  margin: 0;
+  font-size: 0.8rem;
+  color: #555;
+}
+
+/* Schnellauswahl */
+.quick-selection {
+  margin: 20px 0;
+  padding: 0 15px;
+}
+
+.quick-selection .section-title {
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: #2c2240;
+  margin-bottom: 10px;
+}
+
+.tag-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap; 
+  gap: 10px;
+}
+
+.food-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background-color: #e6e3f8;
+  color: #2c2240;
+  padding: 8px 16px;
+  border-radius: 50px;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.food-tag:hover {
+  background-color: #dcd7f2;
+}
+
+/* Mahlzeiten-Liste */
+.list-of-meals {
+  display: flex;
+  flex-direction: column;
+  background: #ffffff;
+  border-radius: 20px;
+  padding: 10px 20px;
+  margin: 0 15px 20px 15px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  width: auto; /* Auf flexibel geändert für Mobilgeräte */
+  box-sizing: border-box;
+}
+
+.list-of-meals .meal-tag {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 0;
+  border-bottom: 1px solid #e5e5e5;
+  font-weight: 500;
+}
+
+.list-of-meals .meal-tag:last-child {
+  border-bottom: none;
+}
+
+.meal-tag i {
+  font-size: 1.5rem;
+  color: rgba(226, 150, 221, 0.85);
+  cursor: pointer;
+}
+
+/* Fixed Footer Navigation */
+.footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 60px;
+  background-color: #ffffff;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  border-top: 1px solid #ddd;
+  z-index: 1000;
+}
+
+.nav-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-decoration: none;
+  color: #333;
+  font-size: 0.75rem;
+  gap: 4px;
+  width: 33%;
+}
+
+.nav-item i {
+  font-size: 1.25rem;
+}
+
+.nav-item.active {
+  color: #a04000;
+  font-weight: bold;
+}
+
+/* ---------------------------------- */
+/* DESKTOP STYLES (ab 768px Breite)   */
+/* ---------------------------------- */
+@media (min-width: 768px) {
+  .footer {
+    display: none;
+  }
+  .page-container-for-mobile {
+    display: none;
+  }
+  .page-container-for-desktop {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    padding: 20px;
+  }
+
+  .list-of-meals {
+    width: 100%;
+    max-width: 600px;
+  }
+}

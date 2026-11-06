@@ -1,7 +1,43 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <title>Lebensmittel</title>
-  </head>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <title>Lebensmittel</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <!-- Icon Libraries -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  
+  <!-- Verknüpfung zur selben CSS-Datei -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+  <div class="page-container-for-mobile">
+    <header class="date">Lebensmittel-Verwaltung</header>
+    
+    <div style="padding: 0 15px;">
+      <p>Hier kannst du deine eigenen Lebensmittel hinzufügen und verwalten.</p>
+    </div>
+
+    <!-- Footer: "Lebensmittel" ist aktiv -->
+    <footer class="footer">
+      <a href="index.html" class="nav-item">
+          <i class="fa-solid fa-chart-column"></i>
+          <span>Übersicht</span>
+      </a>
+      
+      <a href="lebensmittel.html" class="nav-item active">
+          <i class="fa-solid fa-bars"></i>
+          <span>Lebensmittel</span>
+      </a>
+      
+      <a href="#profil" class="nav-item">
+          <i class="fa-solid fa-user"></i>
+          <span>Profil</span>
+      </a>
+    </footer>
+  </div>
+</body>
 </html>
